@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import data from "./data";
-import "./styles.css"
+import "./styles.css";
+import { RiArrowDropDownLine } from "react-icons/ri";
+import { RiArrowDropUpLine } from "react-icons/ri";
 
 function Accordion(){
 
     const [selected, setSelected] = useState(null);
     const [enableMultiSelection, setEnableMultiSelection] = useState(false);
     const [multiple, setMultiple] = useState([]);
+    const [dropdown, setDropdown] = useState(false);
 
     function handleSingleSelection(getCurrentId){
         setSelected(getCurrentId === selected ? null : getCurrentId);
@@ -36,7 +39,7 @@ function Accordion(){
                                 ? () => handleMultipleSelection(item.id) 
                                 : () => handleSingleSelection(item.id)} >
                                 <h3>{item.question}</h3>
-                                <span>+</span>
+                                <span><RiArrowDropDownLine /></span>
                             </div>
                             {
                                 selected === item.id || multiple.indexOf(item.id) !== -1 ? (
